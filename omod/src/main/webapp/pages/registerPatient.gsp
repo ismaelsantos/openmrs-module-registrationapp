@@ -93,6 +93,18 @@ ${ ui.includeFragment("uicommons", "validationMessages")}
                         label: ui.message("registrationapp.birthdate.year.label"),
                         formFieldName: "birthYear",
                         left: true])}
+                
+                <h3>OR</h3>
+                ${ ui.includeFragment("uicommons", "field/text", [
+                        label: ui.message("registrationapp.birthdate.estimatedyear.label"),
+                        formFieldName: "birthDay",
+                        left: true])}
+                        
+                ${ ui.includeFragment("uicommons", "field/text", [
+                        label: ui.message("registrationapp.birthdate.estimatedmonth.label"),
+                        formFieldName: "birthDay",
+                        left: true])}                        
+                
             </fieldset>
 
             <% if (enableOverrideOfAddressPortlet == 'false') { %>
