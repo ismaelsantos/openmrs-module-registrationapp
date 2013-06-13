@@ -53,8 +53,8 @@ ${ ui.includeFragment("uicommons", "validationMessages")}
             <span class="title">Demographics</span>
 
             <fieldset>
-                <legend>Name</legend>
-                <h3>What's the patient's name?</h3>
+                <legend>${ui.message("SystemInfo.name")}</legend>
+                <h3>${ui.message("registrationapp.patient.name.question")}</h3>
                 <% nameTemplate.lineByLineFormat.each { name -> %>
                     ${ ui.includeFragment("uicommons", "field/text", [
                             label: ui.message(nameTemplate.nameMappings[name]),
@@ -77,8 +77,8 @@ ${ ui.includeFragment("uicommons", "validationMessages")}
             </fieldset>
 
             <fieldset>
-                <legend>Birthdate</legend>
-                <h3>What's the patient's birth date?</h3>
+                <legend>${ui.message("Person.birthdate")}</legend>
+                <h3>${ ui.message("registrationapp.birthdate.day.question")}</h3>
                 ${ ui.includeFragment("uicommons", "field/text", [
                         label: ui.message("registrationapp.birthdate.day.label"),
                         formFieldName: "birthDay",
@@ -94,15 +94,15 @@ ${ ui.includeFragment("uicommons", "validationMessages")}
                         formFieldName: "birthYear",
                         left: true])}
                 
-                <h3>OR</h3>
+                <h3>${ ui.message("general.or")} </h3>
                 ${ ui.includeFragment("uicommons", "field/text", [
                         label: ui.message("registrationapp.birthdate.estimatedyear.label"),
-                        formFieldName: "birthDay",
+                        formFieldName: "estimatedYear",
                         left: true])}
                         
                 ${ ui.includeFragment("uicommons", "field/text", [
                         label: ui.message("registrationapp.birthdate.estimatedmonth.label"),
-                        formFieldName: "birthDay",
+                        formFieldName: "estimatedMonth",
                         left: true])}                        
                 
             </fieldset>
@@ -110,7 +110,7 @@ ${ ui.includeFragment("uicommons", "validationMessages")}
             <% if (enableOverrideOfAddressPortlet == 'false') { %>
 	            <fieldset>
 	                <legend>${ ui.message("Person.address") }</legend>
-	                <h3>What is the patient's address?</h3>
+	                <h3>${ui.message("registrationapp.patient.address.question")}</h3>
 	        		${ ui.includeFragment("uicommons", "field/personAddress", [
                     	addressTemplate: addressTemplate
                 	])}
