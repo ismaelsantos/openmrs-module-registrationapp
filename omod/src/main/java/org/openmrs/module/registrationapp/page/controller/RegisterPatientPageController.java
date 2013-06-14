@@ -147,14 +147,10 @@ public class RegisterPatientPageController {
     	
 		Calendar calendar = Calendar.getInstance();
     	if(birthDay != null && birthMonth != null && birthYear != null){
-    		System.out.println("Tenho aniversário :3");
             calendar.set(birthYear, birthMonth, birthDay);
 
             return calendar.getTime();
     	} else {
-    		System.out.println("Não Tenho aniversário :(");
-    		System.out.println("Meu mês aproximado:"+estimatedMonth);
-    		System.out.println("Meu ano aproximado:"+estimatedYear);
     		calendar.add(Calendar.MONTH, -estimatedMonth);
     		calendar.add(Calendar.YEAR, -estimatedYear);
 			
