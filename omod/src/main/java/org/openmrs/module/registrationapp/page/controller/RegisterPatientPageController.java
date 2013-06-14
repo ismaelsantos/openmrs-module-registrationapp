@@ -137,15 +137,32 @@ public class RegisterPatientPageController {
         }
         return patient;
     }
+    
 
-    public Date buildBirthdate(@RequestParam("birthDay") int birthDay,
-        @RequestParam("birthMonth") int birthMonth,
-        @RequestParam("birthYear") int birthYear) {
+    public Date buildBirthdate(@RequestParam(required = false, value="birthDay") Integer birthDay,
+        @RequestParam(required = false, value = "birthMonth") Integer birthMonth,
+        @RequestParam(required = false, value = "birthYear") Integer birthYear,
+        @RequestParam(required = false, value = "estimatedYear") Integer estimatedYear,
+        @RequestParam(required = false, value ="estimatedMonth") Integer estimatedMonth) {
+    	
+		Calendar calendar = Calendar.getInstance();
+    	if(birthDay != null && birthMonth != null && birthYear != null){
+    		System.out.println("Tenho aniversário :3");
+            calendar.set(birthYear, birthMonth, birthDay);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(birthYear, birthMonth, birthDay);
+            return calendar.getTime();
+    	} else {
+    		System.out.println("Não Tenho aniversário :(");
+    		System.out.println("Meu mês aproximado:"+estimatedMonth);
+    		System.out.println("Meu ano aproximado:"+estimatedYear);
+    		calendar.add(Calendar.MONTH, -estimatedMonth);
+    		calendar.add(Calendar.YEAR, -estimatedYear);
+			
+			return calendar.getTime();
+    	}
+    	
 
-        return calendar.getTime();
     }
+
 
 }
