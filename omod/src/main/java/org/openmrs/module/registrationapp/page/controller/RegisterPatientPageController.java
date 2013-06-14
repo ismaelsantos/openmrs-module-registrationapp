@@ -146,6 +146,7 @@ public class RegisterPatientPageController {
         @RequestParam(required = false, value ="estimatedMonth") Integer estimatedMonth) {
     	
 		Calendar calendar = Calendar.getInstance();
+		
     	if(birthDay != null && birthMonth != null && birthYear != null){
             calendar.set(birthYear, birthMonth, birthDay);
 
