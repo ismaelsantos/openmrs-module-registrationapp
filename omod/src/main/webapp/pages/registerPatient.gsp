@@ -14,8 +14,9 @@
                           [label: ui.message("emr.gender.F"), value: 'F'] ]
                           
 	def monthOptions = []
+	
 	(0..11).each { i->
-		monthOptions[i] = [label: ui.message("registrationapp.month."+i), value: i]
+		monthOptions[i] = [label: ui.message("registrationapp.month."+(i+1)), value: i]
 	}
 %>
 ${ ui.includeFragment("uicommons", "validationMessages")}

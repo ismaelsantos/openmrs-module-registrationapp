@@ -41,7 +41,7 @@ public class RegisterPatientPageController {
 
     private static final String REGISTRATION_SECTION_EXTENSION_POINT = "org.openmrs.module.registrationapp.section";
     private static final String REGISTRATION_FORM_STRUCTURE = "formStructure";
-
+    
     public void get(UiSessionContext sessionContext, PageModel model,
                     @RequestParam("appId") AppDescriptor app,
                     @SpringBean("nameTemplateGivenFamily") NameTemplate nameTemplate) throws Exception {
@@ -143,26 +143,24 @@ public class RegisterPatientPageController {
         @RequestParam(required = false, value = "birthMonth") Integer birthMonth,
         @RequestParam(required = false, value = "birthYear") Integer birthYear,
         @RequestParam(required = false, value = "estimatedYear") Integer estimatedYear,
-        @RequestParam(required = false, value ="estimatedMonth") Integer estimatedMonth) {
+        @RequestParam(required = false, value ="estimatedMonth") Integer estimatedMonth,
+        @RequestParam(required = false, value ="patient") Patient patient) {
     	
 		Calendar calendar = Calendar.getInstance();
     	if(birthDay != null && birthMonth != null && birthYear != null){
-    		System.out.println("Tenho aniversário :3");
             calendar.set(birthYear, birthMonth, birthDay);
-
             return calendar.getTime();
     	} else {
-    		System.out.println("Não Tenho aniversário :(");
-    		System.out.println("Meu mês aproximado:"+estimatedMonth);
-    		System.out.println("Meu ano aproximado:"+estimatedYear);
     		calendar.add(Calendar.MONTH, -estimatedMonth);
     		calendar.add(Calendar.YEAR, -estimatedYear);
-			
+    		patient.setBirthdateEstimated(true);
 			return calendar.getTime();
     	}
     	
 
     }
+    
 
+    
 
 }
