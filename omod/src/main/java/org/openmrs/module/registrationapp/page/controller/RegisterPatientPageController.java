@@ -147,6 +147,7 @@ public class RegisterPatientPageController {
         @RequestParam(required = false, value ="patient") Patient patient) {
     	
 		Calendar calendar = Calendar.getInstance();
+		
     	if(birthDay != null && birthMonth != null && birthYear != null){
             calendar.set(birthYear, birthMonth, birthDay);
             return calendar.getTime();
